@@ -1,6 +1,6 @@
 import Atropos from 'atropos/react';
 
-import { technologies } from '~/variables';
+import { technologies } from '~/constants';
 
 const About = () => (
   <section id='about' className='about'>

@@ -1,5 +1,5 @@
 import { Tooltip } from '~/components';
-import { links } from '~/variables';
+import { links } from '~/constants';
 
 const Hero = () => (
   <section className='hero container'>

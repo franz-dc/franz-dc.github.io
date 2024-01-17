@@ -1,5 +1,5 @@
 import { Section } from '~/components';
-import { workExperience } from '~/variables';
+import { workExperience } from '~/constants';
 
 const WorkExperience = () => {
   return (

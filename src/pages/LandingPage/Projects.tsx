@@ -7,7 +7,7 @@ import { Lightbox } from 'yet-another-react-lightbox';
 import { Captions, Counter } from 'yet-another-react-lightbox/plugins';
 
 import { Section, Tooltip } from '~/components';
-import { projects } from '~/variables';
+import { projects } from '~/constants';
 
 import 'yet-another-react-lightbox/styles.css';
 import 'yet-another-react-lightbox/plugins/captions.css';

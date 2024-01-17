@@ -8,7 +8,7 @@ import Projects from './Projects';
 import WorkExperience from './WorkExperience';
 
 import { Tooltip } from '~/components';
-import { links } from '~/variables';
+import { links } from '~/constants';
 
 const LandingPage = () => {
   const { y } = useWindowScrollPosition({ throttle: 0 });
