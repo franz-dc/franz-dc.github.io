@@ -261,6 +261,9 @@ form {
   [data-popper-placement='top'] &__content {
     margin-bottom: 0.5rem;
   }
+  [data-popper-placement='bottom'] &__content {
+    margin-top: 0.25rem;
+  }
   [data-popper-placement='left'] &__content {
     margin-right: 0.5rem;
   }
@@ -595,8 +598,8 @@ form {
     aspect-ratio: 33 / 38;
     object-fit: cover;
     background-color: $bg-contrast;
-    -webkit-mask-image: url('./images/portrait-mask.svg');
-    mask-image: url('./images/portrait-mask.svg');
+    -webkit-mask-image: url('/images/portrait-mask.svg');
+    mask-image: url('/images/portrait-mask.svg');
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
     user-select: none;
