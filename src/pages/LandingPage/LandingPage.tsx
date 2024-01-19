@@ -1,10 +1,6 @@
 import useWindowScrollPosition from '@rehooks/window-scroll-position';
 
-import About from './About';
-import Contact from './Contact';
-import Hero from './Hero';
-import Projects from './Projects';
-import WorkExperience from './WorkExperience';
+import { About, Contact, Hero, Projects, WorkExperience } from './Sections';
 
 import { Footer, Navbar, SideLinks } from '~/components';
 
