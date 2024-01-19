@@ -6,7 +6,7 @@ const Hero = () => (
     <header>
       <p className='hero__greeting'>Hello there! I am</p>
       <h1>
-        <span>Long Header</span> <span>Goes Here</span>
+        <span>Franz Joshua</span> <span>Dela Cruz</span>
       </h1>
       <p className='hero__subtitle'>Building stuff for the web</p>
     </header>
