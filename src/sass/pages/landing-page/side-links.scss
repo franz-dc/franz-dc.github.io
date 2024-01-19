@@ -1,0 +1,31 @@
+.side-links {
+  display: none;
+  transition: createTransition(opacity), createTransition(transform);
+
+  @media (min-width: calc(map.get($breakpoints, 'lg') + 16rem)) {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    right: calc((100vw - map.get($breakpoints, 'lg')) / 2 - 6rem);
+  }
+
+  &__line {
+    position: absolute;
+    bottom: 0;
+    left: 14px;
+    width: 2px;
+    background-color: rgba($bg-contrast, 0.05);
+    z-index: -1;
+  }
+  & .icon-button {
+    font-size: 1.75rem;
+    color: rgba($bg-contrast, 0.4);
+
+    &:hover,
+    &:focus {
+      color: $text-primary;
+    }
+  }
+}

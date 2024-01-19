@@ -1,0 +1,174 @@
+.about {
+  min-height: 700px;
+  height: 100vh;
+  max-height: 1080px;
+  position: relative;
+
+  & h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $bg-lighter;
+    z-index: -1;
+
+    @include mediaUp('lg') {
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        // left container margin + x% container width
+        left: calc(
+          (100vw - map.get($breakpoints, 'lg')) / 2 +
+            map.get($breakpoints, 'lg') * 0.2
+        );
+        right: 0;
+        height: 100%;
+        background-color: $bg;
+        z-index: -1;
+
+        @media (min-height: 800px) {
+          left: calc(
+            (100vw - map.get($breakpoints, 'lg')) / 2 +
+              map.get($breakpoints, 'lg') * 0.1
+          );
+        }
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: calc(
+          (100vw - map.get($breakpoints, 'lg')) / 2 +
+            map.get($breakpoints, 'lg') * 0.2
+        );
+        aspect-ratio: 1;
+        height: 100%;
+        background-color: $bg-lighter;
+        border-radius: 0 50% 50% 0;
+        z-index: -1;
+
+        // bear with me here :D
+        @media (min-height: 800px) {
+          left: calc(
+            (100vw - map.get($breakpoints, 'lg')) / 2 +
+              map.get($breakpoints, 'lg') * 0.05 + 5vh
+          );
+        }
+        @media (min-height: 900px) {
+          left: calc(
+            (100vw - map.get($breakpoints, 'lg')) / 2 +
+              map.get($breakpoints, 'lg') * 0.05
+          );
+        }
+        @media (min-height: 950px) {
+          left: calc(
+            (100vw - map.get($breakpoints, 'lg')) / 2 +
+              map.get($breakpoints, 'lg') * 0.05 - 5vh
+          );
+        }
+        @media (min-height: 1000px) {
+          left: calc(
+            (100vw - map.get($breakpoints, 'lg')) / 2 +
+              map.get($breakpoints, 'lg') * 0.05 - 15vh
+          );
+        }
+      }
+    }
+  }
+  & .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+  }
+  &__content {
+    padding-top: 3.25rem;
+    padding-bottom: 3.25rem;
+
+    @include mediaUp('lg') {
+      width: 58%;
+    }
+  }
+  &__info {
+    margin-bottom: 2rem;
+    color: $text-secondary;
+  }
+  &__technologies {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+
+    @include mediaUp('xs2') {
+      grid-template-columns: 1fr 1fr;
+    }
+    @include mediaUp('sm') {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    @include mediaUp('md') {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 1rem;
+    }
+    @include mediaUp('lg') {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+  &__technology {
+    &__icon {
+      color: $primary;
+      margin-right: 1rem;
+      font-size: 1.25rem;
+      vertical-align: middle;
+
+      @include mediaUp('md') {
+        font-size: 1.5rem;
+      }
+    }
+    &__name {
+      @include font-size;
+    }
+  }
+  &__image-wrapper {
+    position: absolute;
+    top: 50%;
+    right: calc(
+      (100vw - map.get($breakpoints, 'lg')) / 2 + map.get($breakpoints, 'lg') *
+        0.2 - 225px
+    );
+    transform: translateY(-50%);
+    // box-shadow will not work with mask-image
+    filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.3));
+    transition: createTransition(filter);
+
+    &:hover {
+      filter: drop-shadow(0px 0px 12px rgba(0, 0, 0, 0.3));
+    }
+  }
+  &__image {
+    display: none;
+    width: 420px;
+    aspect-ratio: 33 / 38;
+    object-fit: cover;
+    background-color: $bg-contrast;
+    -webkit-mask-image: url('/images/portrait-mask.svg');
+    mask-image: url('/images/portrait-mask.svg');
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    user-select: none;
+
+    @include mediaUp('lg') {
+      display: block;
+      @media (max-height: 800px) {
+        right: calc(
+          (100vw - map.get($breakpoints, 'lg')) / 2 +
+            map.get($breakpoints, 'lg') * 0.2 - 200px
+        );
+      }
+    }
+  }
+}

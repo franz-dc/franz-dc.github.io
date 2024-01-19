@@ -1,0 +1,17 @@
+@mixin mediaUp($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint `#{$breakpoint}` does not exist.";
+  }
+}
+
+@mixin font-size {
+  font-size: 1.125rem;
+
+  @include mediaUp('md') {
+    font-size: 1.25rem;
+  }
+}

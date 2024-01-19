@@ -1,0 +1,26 @@
+.tooltip {
+  &__content {
+    @extend .section;
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
+    opacity: 0;
+    transform-origin: top center;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: createTransition(opacity), createTransition(transform);
+    backdrop-filter: blur(10px);
+  }
+
+  [data-popper-placement='top'] &__content {
+    margin-bottom: 0.5rem;
+  }
+  [data-popper-placement='bottom'] &__content {
+    margin-top: 0.25rem;
+  }
+  [data-popper-placement='left'] &__content {
+    margin-right: 0.5rem;
+  }
+  [data-popper-placement='right'] &__content {
+    margin-left: 0.5rem;
+  }
+}

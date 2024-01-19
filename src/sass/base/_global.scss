@@ -1,0 +1,15 @@
+:root {
+  font-family: 'Urbanist Variable', system-ui, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 300;
+
+  color-scheme: dark;
+  color: $text-primary;
+  background-color: $bg;
+
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+}

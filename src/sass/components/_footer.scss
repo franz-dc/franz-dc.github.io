@@ -1,0 +1,38 @@
+footer {
+  background-color: $bg-lighter;
+  color: $text-secondary;
+  text-align: center;
+
+  & p {
+    font-size: 0.875rem;
+
+    @include mediaUp('md') {
+      font-size: 1rem;
+    }
+  }
+
+  & .container {
+    position: relative;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 1rem;
+      right: 1rem;
+      height: 1px;
+      border-top: 1px solid rgba($bg-contrast, 0.05);
+
+      @include mediaUp('md') {
+        left: 2rem;
+        right: 2rem;
+      }
+    }
+  }
+  & a {
+    color: $text-secondary;
+    font-weight: 600;
+  }
+}

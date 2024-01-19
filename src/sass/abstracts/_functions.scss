@@ -1,0 +1,14 @@
+@function createTransition($properties, $duration: 'short') {
+  $transition-duration: map.get($transition-durations, $duration);
+  $transition: ();
+
+  @each $property in $properties {
+    $transition: append(
+      $transition,
+      $property $transition-duration ease-in-out,
+      comma
+    );
+  }
+
+  @return $transition;
+}

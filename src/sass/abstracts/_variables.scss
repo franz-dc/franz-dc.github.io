@@ -1,0 +1,26 @@
+// colors
+$bg: #161a22;
+$bg-lighter: #22252f;
+$bg-contrast: #ffffff;
+$primary: #87c5ff;
+$primary-dark: #72a6d8;
+$text-primary: rgba($bg-contrast, 0.95);
+$text-secondary: rgba($bg-contrast, 0.6);
+$shadow: rgba(0, 0, 0, 0.2);
+
+// breakpoints inspired by MUI
+$breakpoints: (
+  'xs': 0,
+  'xs2': 400px,
+  'sm': 600px,
+  'md': 900px,
+  'lg': 1200px,
+  'xl': 1536px,
+);
+
+// transitions
+$transition-durations: (
+  'short': 0.1s,
+  'medium': 0.2s,
+  'long': 0.3s,
+);

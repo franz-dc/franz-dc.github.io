@@ -1,0 +1,11 @@
+.container {
+  box-sizing: border-box;
+  max-width: map.get($breakpoints, 'lg');
+  padding: 0 1rem;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include mediaUp('md') {
+    padding: 0 2rem;
+  }
+}

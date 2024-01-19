@@ -1,0 +1,77 @@
+.navbar {
+  width: 100%;
+  height: 3.5rem;
+  background-color: rgba($bg, 0.65);
+  backdrop-filter: blur(10px);
+  transition: createTransition(box-shadow, 'medium');
+
+  &--shadow {
+    box-shadow: 0 0 1rem $shadow;
+  }
+  &--logo-only {
+    & .container {
+      gap: 0 !important;
+
+      @include mediaUp('sm') {
+        gap: 2rem !important;
+      }
+    }
+  }
+  & .container {
+    display: flex;
+    gap: 1.5rem;
+    height: 100%;
+    transition: createTransition(gap), createTransition(justify-content);
+
+    @include mediaUp('sm') {
+      gap: 2rem;
+    }
+  }
+  &__brand-button {
+    margin: auto;
+    transition: createTransition(margin);
+
+    @include mediaUp('sm') {
+      margin: auto auto auto 0;
+    }
+
+    &--normal {
+      margin: auto auto auto 0;
+    }
+  }
+  &__brand-logo {
+    display: block;
+    height: 40px;
+  }
+  &__section-link {
+    display: none;
+    align-items: center;
+    font-weight: 500;
+    font-size: 1.125rem;
+    color: $text-secondary;
+    text-decoration: none !important;
+
+    &:hover {
+      color: $text-primary;
+    }
+
+    @include mediaUp('sm') {
+      display: flex;
+    }
+  }
+  &__link {
+    display: flex;
+    align-items: center;
+    font-size: 1.75rem;
+    transition: createTransition(width), createTransition(opacity);
+
+    @include mediaUp('sm') {
+      display: none;
+    }
+
+    &.hide {
+      width: 0;
+      opacity: 0;
+    }
+  }
+}

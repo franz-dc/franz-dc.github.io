@@ -1,0 +1,13 @@
+.section {
+  @include font-size;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid rgba($bg-contrast, 0.025);
+  border-radius: 10px;
+  background-color: rgba($bg-contrast, 0.05);
+  box-shadow: 0px 0px 8px 0px $shadow;
+  color: rgba($bg-contrast, 0.75);
+
+  @include mediaUp('md') {
+    padding: 1.5rem 2rem;
+  }
+}

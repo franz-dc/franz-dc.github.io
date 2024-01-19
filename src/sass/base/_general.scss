@@ -1,0 +1,31 @@
+@import 'atropos/scss';
+
+a {
+  color: $primary;
+  text-decoration: none;
+  outline: none;
+  transition: createTransition(color);
+
+  &:focus:not(.button),
+  &:hover:not(.button) {
+    text-decoration: underline;
+  }
+}
+
+form {
+  & .button {
+    font-family: inherit;
+    font-size: inherit;
+  }
+}
+
+// lightbox
+.yarl {
+  &__container {
+    background-color: rgba(0, 0, 0, 0.85) !important;
+    backdrop-filter: blur(4px);
+  }
+  &__slide_image {
+    border-radius: 10px;
+  }
+}
