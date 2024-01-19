@@ -21,6 +21,29 @@ $breakpoints: (
   'xl': 1536px,
 );
 
+// transitions
+$transition-durations: (
+  'short': 0.1s,
+  'medium': 0.2s,
+  'long': 0.3s,
+);
+
+// functions
+@function createTransition($properties, $duration: 'short') {
+  $transition-duration: map.get($transition-durations, $duration);
+  $transition: ();
+
+  @each $property in $properties {
+    $transition: append(
+      $transition,
+      $property $transition-duration ease-in-out,
+      comma
+    );
+  }
+
+  @return $transition;
+}
+
 // mixins
 @mixin mediaUp($breakpoint) {
   @if map-has-key($breakpoints, $breakpoint) {
@@ -31,7 +54,6 @@ $breakpoints: (
     @warn "Breakpoint `#{$breakpoint}` does not exist.";
   }
 }
-
 @mixin font-size {
   font-size: 1.125rem;
 
@@ -66,6 +88,7 @@ h1 {
 }
 
 h2 {
+  margin-top: 0;
   font-size: 2rem;
   font-weight: 600;
 
@@ -92,7 +115,7 @@ a {
   color: $primary;
   text-decoration: none;
   outline: none;
-  transition: color 0.1s ease-in-out;
+  transition: createTransition(color);
 
   &:focus:not(.button),
   &:hover:not(.button) {
@@ -125,9 +148,7 @@ form {
   color: #22252f;
   text-decoration: none;
   border-radius: 4px;
-  transition:
-    background-color 0.1s ease-in-out,
-    transform 0.1s ease-in-out;
+  transition: createTransition(background-color), createTransition(transform);
   display: inline-block;
   outline: none;
   text-align: center;
@@ -176,9 +197,7 @@ form {
   font-size: 2rem;
   text-decoration: none;
   outline: none;
-  transition:
-    color 0.1s ease-in-out,
-    transform 0.1s ease-in-out;
+  transition: createTransition(color), createTransition(transform);
 
   &:focus,
   &:hover {
@@ -236,10 +255,76 @@ form {
   height: 3.5rem;
   background-color: rgba($bg, 0.65);
   backdrop-filter: blur(10px);
-  transition: box-shadow 0.2s ease-in-out;
+  transition: createTransition(box-shadow, 'medium');
 
   &--shadow {
     box-shadow: 0 0 1rem $shadow;
+  }
+  &--logo-only {
+    & .container {
+      gap: 0 !important;
+
+      @include mediaUp('sm') {
+        gap: 2rem !important;
+      }
+    }
+  }
+  & .container {
+    display: flex;
+    gap: 1.5rem;
+    height: 100%;
+    transition: createTransition(gap), createTransition(justify-content);
+
+    @include mediaUp('sm') {
+      gap: 2rem;
+    }
+  }
+  &__brand-button {
+    margin: auto;
+    transition: createTransition(margin);
+
+    @include mediaUp('sm') {
+      margin: auto auto auto 0;
+    }
+
+    &--normal {
+      margin: auto auto auto 0;
+    }
+  }
+  &__brand-logo {
+    display: block;
+    height: 40px;
+  }
+  &__section-link {
+    display: none;
+    align-items: center;
+    font-weight: 500;
+    font-size: 1.125rem;
+    color: $text-secondary;
+    text-decoration: none !important;
+
+    &:hover {
+      color: $text-primary;
+    }
+
+    @include mediaUp('sm') {
+      display: flex;
+    }
+  }
+  &__link {
+    display: flex;
+    align-items: center;
+    font-size: 1.75rem;
+    transition: createTransition(width), createTransition(opacity);
+
+    @include mediaUp('sm') {
+      display: none;
+    }
+
+    &.hide {
+      width: 0;
+      opacity: 0;
+    }
   }
 }
 
@@ -252,9 +337,7 @@ form {
     transform-origin: top center;
     font-size: 0.875rem;
     font-weight: 500;
-    transition:
-      opacity 0.1s ease-in-out,
-      transform 0.1s ease-in-out;
+    transition: createTransition(opacity), createTransition(transform);
     backdrop-filter: blur(10px);
   }
 
@@ -284,7 +367,7 @@ form {
     color: $text-primary;
     font-size: 0.875rem;
     font-weight: 400;
-    transition: color 0.1s ease-in-out;
+    transition: createTransition(color);
   }
   & input {
     display: block;
@@ -299,9 +382,7 @@ form {
     font-family: inherit;
     font-size: inherit;
     line-height: inherit;
-    transition:
-      border-color 0.1s ease-in-out,
-      box-shadow 0.1s ease-in-out;
+    transition: createTransition(border-color), createTransition(box-shadow);
 
     &:focus {
       border-color: $primary;
@@ -329,9 +410,7 @@ form {
 // landing page
 .side-links {
   display: none;
-  transition:
-    opacity 0.2s ease-in-out,
-    transform 0.15s ease-in-out;
+  transition: createTransition(opacity), createTransition(transform);
 
   @media (min-width: calc(map.get($breakpoints, 'lg') + 16rem)) {
     position: fixed;
@@ -374,14 +453,24 @@ form {
   & header {
     position: relative;
     width: fit-content;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     // compensate for bottom link height
     margin-top: auto;
+    text-align: center;
+
+    @include mediaUp('sm') {
+      margin-bottom: 2rem;
+      text-align: left;
+    }
 
     & h1 {
       margin-top: 0;
       margin-bottom: 0.5rem;
       line-height: 1;
+
+      & span {
+        white-space: nowrap;
+      }
     }
   }
   & .button {
@@ -392,7 +481,10 @@ form {
     }
   }
   &__greeting {
-    margin-bottom: 0.5rem;
+    margin-bottom: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
     padding-right: 1rem;
     background-color: $bg;
     color: $text-secondary;
@@ -407,6 +499,13 @@ form {
       height: 2px;
       background-color: rgba($bg-contrast, 0.1);
       z-index: -1;
+    }
+
+    @include mediaUp('sm') {
+      margin-bottom: 0.5rem;
+      margin-left: 0;
+      padding-left: 0;
+      width: fit-content;
     }
   }
   &__subtitle {
@@ -429,10 +528,15 @@ form {
   &__links {
     display: flex;
     gap: 1.5rem;
+    justify-content: center;
     flex-wrap: wrap;
     line-height: 0;
     margin-top: auto;
     margin-bottom: 2rem;
+
+    @include mediaUp('sm') {
+      justify-content: flex-start;
+    }
   }
 }
 
@@ -441,11 +545,6 @@ form {
   height: 100vh;
   max-height: 1080px;
   position: relative;
-  margin-bottom: 3.25rem;
-
-  @include mediaUp('md') {
-    margin-bottom: 6.5rem;
-  }
 
   & h2 {
     margin-top: 0;
@@ -586,7 +685,7 @@ form {
     transform: translateY(-50%);
     // box-shadow will not work with mask-image
     filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.3));
-    transition: filter 0.1s ease-in-out;
+    transition: createTransition(filter);
 
     &:hover {
       filter: drop-shadow(0px 0px 12px rgba(0, 0, 0, 0.3));
@@ -617,10 +716,12 @@ form {
 }
 
 .projects {
-  margin-bottom: 6.5rem;
+  padding-top: 3.25rem;
+  margin-bottom: 3.25rem;
 
   @include mediaUp('md') {
-    margin-bottom: 9.25rem;
+    padding-top: 6.5rem;
+    margin-bottom: 3.25rem;
   }
 
   & h2 {
@@ -713,7 +814,7 @@ form {
       background-color: rgba($bg-contrast, 0.1);
 
       & > * {
-        transition: all 0.2s ease-in-out;
+        transition: createTransition(all, 'medium');
       }
     }
     & .button-base {
@@ -730,7 +831,7 @@ form {
         height: 100%;
         border-radius: 10px;
         z-index: -1;
-        transition: background-color 0.1s ease-in-out;
+        transition: createTransition(background-color);
       }
       &:focus::after {
         // cover the whole frame with primary color
@@ -796,7 +897,12 @@ form {
 }
 
 .work-experience {
+  padding-top: 3.25rem;
   margin-bottom: 6.5rem;
+
+  @include mediaUp('md') {
+    padding-top: 6.5rem;
+  }
 
   & h2 {
     text-align: center;
