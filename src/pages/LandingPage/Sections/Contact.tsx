@@ -1,4 +1,4 @@
-// import { MdInsertDriveFile } from 'react-icons/md';
+import { MdInsertDriveFile } from 'react-icons/md';
 
 const Contact = () => {
   const email = 'franzdc.21@gmail.com';
@@ -47,7 +47,7 @@ const Contact = () => {
               <p style={{ marginBottom: 0 }}>
                 You can mail me at <a href={`mailto:${email}`}>{email}</a>.
               </p>
-              {/* <a
+              <a
                 className='button button--outlined'
                 href='/resume.pdf'
                 target='_blank'
@@ -56,7 +56,7 @@ const Contact = () => {
               >
                 <MdInsertDriveFile className='button__icon' />
                 Download Resume
-              </a> */}
+              </a>
             </div>
           </div>
         </div>
