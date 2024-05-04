@@ -24,7 +24,7 @@ const About = () => (
       <div className='about__content'>
         <h2>About</h2>
         <p className='about__info'>
-          Passionate full-stack web developer with 4+ years of experience in
+          Passionate full-stack web developer with 5+ years of experience in
           designing and implementing innovative web solutions. Proficient in
           front and back-end technologies, specializing in creating responsive
           and user-friendly applications. It is my commitment to write clean and
